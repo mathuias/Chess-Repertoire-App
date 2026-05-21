@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-openings-table
+      author: mathuias
+      changes:
+        - createTable:
+            tableName: openings
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: owner_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_openings_owner
+                    references: users(id)
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pgn
+                  type: clob
+                  constraints:
+                    nullable: false
+              - column:
+                  name: initial_fen
+                  type: varchar(255)
+              - column:
+                  name: notes
+                  type: clob
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: openings
+            indexName: idx_openings_owner
+            columns:
+              - column:
+                  name: owner_id

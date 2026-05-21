@@ -32,7 +32,7 @@ These additional references should also help you:
 cd /Users/mathuias/DEV/Projects/Spring/vue-ui && npm install
 
 2. Start the Spring backend with the test profile (so the seeded users exist):
-cd /Users/mathuias/DEV/Projects/Spring && ./gradlew bootRun --args='--spring.profiles.active=test'
+cd /Users/mathuias/DEV/Projects/Spring && ./gradlew bootRun --args='--spring.profiles.active=localdev'
 
 3. Start the Vite dev server in another terminal:
 cd /Users/mathuias/DEV/Projects/Spring/vue-ui && npm run dev

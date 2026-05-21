@@ -3,6 +3,8 @@ package dev.mathuias.springdemo.controller;
 import dev.mathuias.springdemo.auth.JwtService;
 import dev.mathuias.springdemo.auth.LoginRequest;
 import dev.mathuias.springdemo.auth.LoginResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth")
 public class AuthController {
 
+    private static final Logger log = LoggerFactory.getLogger(AuthController.class);
+
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
@@ -26,12 +30,17 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        log.debug("Login attempt received for email={}", request.email());
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(request.email(), request.password()));
+            log.debug("Credentials validated for email={}", request.email());
         } catch (AuthenticationException e) {
+            log.warn("Login failed for email={}: {}", request.email(), e.getMessage());
             return ResponseEntity.status(401).build();
         }
-        return ResponseEntity.ok(new LoginResponse(jwtService.generateToken(request.email())));
+        String token = jwtService.generateToken(request.email());
+        log.info("JWT issued for email={}", request.email());
+        return ResponseEntity.ok(new LoginResponse(token));
     }
 }

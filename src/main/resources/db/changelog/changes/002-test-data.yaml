@@ -18,7 +18,7 @@ databaseChangeLog:
                   value: alice@example.com
               - column:
                   name: password
-                  value: $2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy
+                  value: $2a$10$Rs7H1yGqctVB8ZODMwSPJeBbT7YpMlam7HrI8whAkGJQlpgyO2i/.
         - insert:
             tableName: users
             columns:
@@ -33,7 +33,7 @@ databaseChangeLog:
                   value: bob@example.com
               - column:
                   name: password
-                  value: $2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy
+                  value: $2a$10$Rs7H1yGqctVB8ZODMwSPJeBbT7YpMlam7HrI8whAkGJQlpgyO2i/.
         - insert:
             tableName: users
             columns:
@@ -48,4 +48,4 @@ databaseChangeLog:
                   value: charlie@example.com
               - column:
                   name: password
-                  value: $2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy
+                  value: $2a$10$Rs7H1yGqctVB8ZODMwSPJeBbT7YpMlam7HrI8whAkGJQlpgyO2i/.

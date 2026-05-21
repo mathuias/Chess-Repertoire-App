@@ -26,8 +26,8 @@ class UserServiceTest {
 
     @Test
     void findAll_delegatesToRepository() {
-        User alice = new User("Alice", "Anderson");
-        User bob = new User("Bob", "Brown");
+        User alice = new User("Alice", "Anderson", "alice@example.com", "hash");
+        User bob = new User("Bob", "Brown", "bob@example.com", "hash");
         when(userRepository.findAll()).thenReturn(List.of(alice, bob));
 
         List<User> result = userService.findAll();
@@ -38,7 +38,7 @@ class UserServiceTest {
 
     @Test
     void findById_returnsUserWhenRepositoryFindsIt() {
-        User alice = new User("Alice", "Anderson");
+        User alice = new User("Alice", "Anderson", "alice@example.com", "hash");
         when(userRepository.findById(1L)).thenReturn(Optional.of(alice));
 
         Optional<User> result = userService.findById(1L);

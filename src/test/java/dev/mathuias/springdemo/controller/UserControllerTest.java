@@ -1,11 +1,13 @@
 package dev.mathuias.springdemo.controller;
 
+import dev.mathuias.springdemo.auth.JpaUserDetailsService;
+import dev.mathuias.springdemo.auth.JwtService;
 import dev.mathuias.springdemo.service.UserService;
 import dev.mathuias.springdemo.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -19,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(UserController.class)
-@WithMockUser
+@AutoConfigureMockMvc(addFilters = false)
 class UserControllerTest {
 
     @Autowired
@@ -28,11 +30,17 @@ class UserControllerTest {
     @MockitoBean
     private UserService userService;
 
+    @MockitoBean
+    private JwtService jwtService;
+
+    @MockitoBean
+    private JpaUserDetailsService jpaUserDetailsService;
+
     @Test
     void getAll_returnsJsonArrayFromService() throws Exception {
         when(userService.findAll()).thenReturn(List.of(
-                new User("Alice", "Anderson"),
-                new User("Bob", "Brown")));
+                new User("Alice", "Anderson", "alice@example.com", "hash"),
+                new User("Bob", "Brown", "bob@example.com", "hash")));
 
         mockMvc.perform(get("/api/users"))
                 .andExpect(status().isOk())
@@ -45,7 +53,7 @@ class UserControllerTest {
 
     @Test
     void getById_returns200AndUserWhenFound() throws Exception {
-        when(userService.findById(1L)).thenReturn(Optional.of(new User("Alice", "Anderson")));
+        when(userService.findById(1L)).thenReturn(Optional.of(new User("Alice", "Anderson", "alice@example.com", "hash")));
 
         mockMvc.perform(get("/api/users/1"))
                 .andExpect(status().isOk())

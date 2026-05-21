@@ -13,6 +13,12 @@ databaseChangeLog:
               - column:
                   name: lastname
                   value: Anderson
+              - column:
+                  name: email
+                  value: alice@example.com
+              - column:
+                  name: password
+                  value: $2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy
         - insert:
             tableName: users
             columns:
@@ -22,6 +28,12 @@ databaseChangeLog:
               - column:
                   name: lastname
                   value: Brown
+              - column:
+                  name: email
+                  value: bob@example.com
+              - column:
+                  name: password
+                  value: $2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy
         - insert:
             tableName: users
             columns:
@@ -31,3 +43,9 @@ databaseChangeLog:
               - column:
                   name: lastname
                   value: Clark
+              - column:
+                  name: email
+                  value: charlie@example.com
+              - column:
+                  name: password
+                  value: $2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy

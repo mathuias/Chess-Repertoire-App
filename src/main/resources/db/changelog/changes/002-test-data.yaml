@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-test-data
+      author: mathuias
+      context: test
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: firstname
+                  value: Alice
+              - column:
+                  name: lastname
+                  value: Anderson
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: firstname
+                  value: Bob
+              - column:
+                  name: lastname
+                  value: Brown
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: firstname
+                  value: Charlie
+              - column:
+                  name: lastname
+                  value: Clark

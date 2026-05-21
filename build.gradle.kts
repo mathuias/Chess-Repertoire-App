@@ -6,7 +6,7 @@ plugins {
 
 group = "dev.mathuias"
 version = "0.0.2"
-description = "Spring Boot demo for mathuias"
+description = "Chess Repertoire App"
 
 java {
 	toolchain {

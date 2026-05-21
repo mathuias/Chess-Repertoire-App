@@ -1,6 +1,6 @@
-package dev.mathuias.springdemo.auth;
+package dev.mathuias.chessrepertoire.auth;
 
-import dev.mathuias.springdemo.repository.UserRepository;
+import dev.mathuias.chessrepertoire.repository.UserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

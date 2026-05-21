@@ -1,6 +1,6 @@
-package dev.mathuias.springdemo.repository;
+package dev.mathuias.chessrepertoire.repository;
 
-import dev.mathuias.springdemo.user.User;
+import dev.mathuias.chessrepertoire.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

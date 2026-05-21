@@ -1,10 +1,10 @@
-package dev.mathuias.springdemo;
+package dev.mathuias.chessrepertoire;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringDemoApplicationTests {
+class ChessRepertoireApplicationTests {
 
 	@Test
 	void contextLoads() {

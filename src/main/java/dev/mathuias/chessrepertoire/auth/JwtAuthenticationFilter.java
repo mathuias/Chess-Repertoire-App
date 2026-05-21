@@ -1,4 +1,4 @@
-package dev.mathuias.springdemo.auth;
+package dev.mathuias.chessrepertoire.auth;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

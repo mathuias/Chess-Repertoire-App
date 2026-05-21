@@ -1,8 +1,8 @@
-package dev.mathuias.springdemo.controller;
+package dev.mathuias.chessrepertoire.controller;
 
-import dev.mathuias.springdemo.auth.JwtService;
-import dev.mathuias.springdemo.auth.LoginRequest;
-import dev.mathuias.springdemo.auth.LoginResponse;
+import dev.mathuias.chessrepertoire.auth.JwtService;
+import dev.mathuias.chessrepertoire.auth.LoginRequest;
+import dev.mathuias.chessrepertoire.auth.LoginResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

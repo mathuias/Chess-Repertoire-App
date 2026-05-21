@@ -1,4 +1,4 @@
-package dev.mathuias.springdemo.auth;
+package dev.mathuias.chessrepertoire.auth;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

@@ -1,7 +1,7 @@
-package dev.mathuias.springdemo.controller;
+package dev.mathuias.chessrepertoire.controller;
 
-import dev.mathuias.springdemo.service.UserService;
-import dev.mathuias.springdemo.user.User;
+import dev.mathuias.chessrepertoire.service.UserService;
+import dev.mathuias.chessrepertoire.user.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

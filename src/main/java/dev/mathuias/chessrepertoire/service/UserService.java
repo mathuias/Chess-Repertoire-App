@@ -1,7 +1,7 @@
-package dev.mathuias.springdemo.service;
+package dev.mathuias.chessrepertoire.service;
 
-import dev.mathuias.springdemo.repository.UserRepository;
-import dev.mathuias.springdemo.user.User;
+import dev.mathuias.chessrepertoire.repository.UserRepository;
+import dev.mathuias.chessrepertoire.user.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

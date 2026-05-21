@@ -1,4 +1,4 @@
-package dev.mathuias.springdemo.user;
+package dev.mathuias.chessrepertoire.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

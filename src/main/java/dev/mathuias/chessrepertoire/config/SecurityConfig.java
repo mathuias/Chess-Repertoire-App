@@ -1,6 +1,6 @@
-package dev.mathuias.springdemo.config;
+package dev.mathuias.chessrepertoire.config;
 
-import dev.mathuias.springdemo.auth.JwtAuthenticationFilter;
+import dev.mathuias.chessrepertoire.auth.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,6 +1,6 @@
-package dev.mathuias.springdemo.repository;
+package dev.mathuias.chessrepertoire.repository;
 
-import dev.mathuias.springdemo.user.User;
+import dev.mathuias.chessrepertoire.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;

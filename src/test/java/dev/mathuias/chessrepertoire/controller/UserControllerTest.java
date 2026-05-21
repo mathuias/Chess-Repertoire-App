@@ -1,9 +1,9 @@
-package dev.mathuias.springdemo.controller;
+package dev.mathuias.chessrepertoire.controller;
 
-import dev.mathuias.springdemo.auth.JpaUserDetailsService;
-import dev.mathuias.springdemo.auth.JwtService;
-import dev.mathuias.springdemo.service.UserService;
-import dev.mathuias.springdemo.user.User;
+import dev.mathuias.chessrepertoire.auth.JpaUserDetailsService;
+import dev.mathuias.chessrepertoire.auth.JwtService;
+import dev.mathuias.chessrepertoire.service.UserService;
+import dev.mathuias.chessrepertoire.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;

@@ -19,7 +19,7 @@ async function submit() {
   try {
     const { token } = await login(email.value, password.value)
     auth.setToken(token)
-    const redirect = (route.query.redirect as string | undefined) ?? '/hello'
+    const redirect = (route.query.redirect as string | undefined) ?? '/openings'
     router.replace(redirect)
   } catch (e) {
     error.value = e instanceof Error ? e.message : 'Login failed'

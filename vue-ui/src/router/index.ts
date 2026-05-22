@@ -7,12 +7,30 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/hello',
+      redirect: '/openings',
     },
     {
       path: '/login',
       name: 'login',
       component: LoginView,
+    },
+    {
+      path: '/openings',
+      name: 'openings',
+      component: () => import('@/views/OpeningsView.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/openings/new',
+      name: 'opening-new',
+      component: () => import('@/views/OpeningEditorView.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/openings/:id(\\d+)',
+      name: 'opening-edit',
+      component: () => import('@/views/OpeningEditorView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/hello',
@@ -29,7 +47,7 @@ router.beforeEach((to) => {
     return { name: 'login', query: { redirect: to.fullPath } }
   }
   if (to.name === 'login' && auth.isAuthenticated) {
-    return { name: 'hello' }
+    return { name: 'openings' }
   }
 })
 

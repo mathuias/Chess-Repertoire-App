@@ -5,8 +5,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### CONFIG FILES ###
+### Key Access ###
 application-localdev.properties
+ReadMe.md
 
 ### STS ###
 .apt_generated

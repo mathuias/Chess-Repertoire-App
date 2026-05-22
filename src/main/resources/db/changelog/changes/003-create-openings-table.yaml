@@ -27,7 +27,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: pgn
-                  type: clob
+                  type: oid
                   constraints:
                     nullable: false
               - column:
@@ -35,7 +35,7 @@ databaseChangeLog:
                   type: varchar(255)
               - column:
                   name: notes
-                  type: clob
+                  type: oid
               - column:
                   name: created_at
                   type: timestamp

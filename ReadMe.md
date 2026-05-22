@@ -1,5 +1,68 @@
 # Getting Started
 
+## Start the Application
+### How to run the setup on local 
+
+1. Install Vue deps:
+cd /Users/mathuias/DEV/Projects/Chess-Repertoire-App/vue-ui && npm install
+
+2. Start the Spring Backend with the test profile (so the seeded users exist):
+cd /Users/mathuias/DEV/Projects/Chess-Repertoire-App && ./gradlew bootRun --args='--spring.profiles.active=localdev'
+
+3. Start the Vite dev server in another terminal:
+cd /Users/mathuias/DEV/Projects/Chess-Repertoire-App/vue-ui && npm run dev
+
+4. Open http://localhost:5173/. You'll be redirected to /login with the form pre-filled with alice@example.com / password. Click Sign in → JWT lands in localStorage → routed to /hello → "Hello World!" appears.
+
+5. Start local postgres database or simply use H2 for local 
+
+
+## Setup Database
+
+### Install postgres database (on mac)
+brew install postgresql@17
+brew services start postgresql@17
+brew services list 
+
+// check connection
+psql -U postgres -d postgres -h localhost
+
+// stop db service if not needed anymore
+brew services stop postgresql@17
+
+### Set up the database
+createdb postgres
+
+// init db
+psql postgres
+
+// create user and grant priviledges
+CREATE USER postgres WITH PASSWORD 'admin';
+
+### grant all permissions to user
+GRANT ALL PRIVILEGES ON DATABASE postgres TO postgres;
+GRANT ALL PRIVILEGES ON SCHEMA public TO postgres;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO postgres;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO postgres;
+
+## Setup the Vue Frontend
+### Clean the node dependencies 
+rm -rf node_modules
+rm package-lock.json
+npm cache clean --force
+
+
+
+## Developers Troubleshoot
+### Test Login with 
+curl -X POST http://localhost:8080/api/auth/login \
+        -H 'Content-Type: application/json' \
+        -d '{"email":"alice@example.com","password":"password"}'
+
+
+
+
+## Helpful Links
 ### Reference Documentation
 For further reference, please consider the following sections:
 
@@ -25,31 +88,3 @@ The following guides illustrate how to use some features concretely:
 These additional references should also help you:
 
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
-
-### How to run the setup on local 
-
-1. Install Vue deps:
-cd /Users/mathuias/DEV/Projects/Spring/vue-ui && npm install
-
-2. Start the Spring backend with the test profile (so the seeded users exist):
-cd /Users/mathuias/DEV/Projects/Spring && ./gradlew bootRun --args='--spring.profiles.active=localdev'
-
-3. Start the Vite dev server in another terminal:
-cd /Users/mathuias/DEV/Projects/Spring/vue-ui && npm run dev
-
-4. Open http://localhost:5173/. You'll be redirected to /login with the form pre-filled with alice@example.com / password. Click Sign in → JWT lands in localStorage → routed to /hello → "Hello World!" appears.
-
-5. Start local postgres database
-brew install postgresql@17
-brew services start postgresql@17
-
-### Test Login with 
-curl -X POST http://localhost:8080/api/auth/login \
-        -H 'Content-Type: application/json' \
-        -d '{"email":"alice@example.com","password":"password"}'
-
-
-### Clean the node dependencies 
-rm -rf node_modules
-rm package-lock.json
-npm cache clean --force

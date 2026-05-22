@@ -1,12 +1,18 @@
 plugins {
-	java
+	id("java")
 	id("org.springframework.boot") version "4.0.6"
 	id("io.spring.dependency-management") version "1.1.7"
+
+	id("jacoco")
+
+	id("com.github.ben-manes.versions") version "0.51.0"
+
+	
 }
 
 group = "dev.mathuias"
 version = "0.0.2"
-description = "Chess Repertoire App"
+description = "Application to manage your Chess Opening Repertoire"
 
 java {
 	toolchain {
@@ -18,9 +24,16 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	implementation {
+		exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
+	}
+}
+
 dependencies {
 	
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-log4j2")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-webmvc")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -32,6 +45,7 @@ dependencies {
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
 
 	runtimeOnly("com.h2database:h2")
+	runtimeOnly("org.postgresql:postgresql")
 	
 	testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-security-test")

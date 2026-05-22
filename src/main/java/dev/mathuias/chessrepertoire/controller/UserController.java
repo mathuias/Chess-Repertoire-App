@@ -2,6 +2,8 @@ package dev.mathuias.chessrepertoire.controller;
 
 import dev.mathuias.chessrepertoire.service.UserService;
 import dev.mathuias.chessrepertoire.user.User;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Slf4j
 @RequestMapping("/api/users")
 public class UserController {
 
@@ -22,11 +25,13 @@ public class UserController {
 
     @GetMapping
     public List<User> getAll() {
+        log.info("Received request to get all users");
         return userService.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getById(@PathVariable Long id) {
+        log.info("Received request to get user with id {}", id);
         return userService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());

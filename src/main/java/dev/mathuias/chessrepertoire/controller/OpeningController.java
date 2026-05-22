@@ -7,6 +7,7 @@ import dev.mathuias.chessrepertoire.repository.UserRepository;
 import dev.mathuias.chessrepertoire.service.OpeningService;
 import dev.mathuias.chessrepertoire.user.User;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Slf4j
 @RequestMapping("/api/openings")
 public class OpeningController {
 
@@ -37,6 +39,7 @@ public class OpeningController {
     @GetMapping
     public List<OpeningResponse> getAll(@AuthenticationPrincipal UserDetails principal) {
         User owner = currentUser(principal);
+        log.info("Received request to get all openings for user: {}", owner.getEmail());
         return openingService.findAll(owner).stream()
                 .map(OpeningResponse::from)
                 .toList();
@@ -46,6 +49,7 @@ public class OpeningController {
     public ResponseEntity<OpeningResponse> getById(@PathVariable Long id,
                                                    @AuthenticationPrincipal UserDetails principal) {
         User owner = currentUser(principal);
+        log.info("Received request to get opening with id {}: {}", id, owner.getEmail());
         return openingService.findById(id, owner)
                 .map(o -> ResponseEntity.ok(OpeningResponse.from(o)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -56,6 +60,7 @@ public class OpeningController {
                                                   @AuthenticationPrincipal UserDetails principal) {
         User owner = currentUser(principal);
         Opening opening = openingService.create(owner, request);
+        log.info("Created new opening with id {} for user: {}", opening.getId(), owner.getEmail());
         return ResponseEntity.status(HttpStatus.CREATED).body(OpeningResponse.from(opening));
     }
 
@@ -64,6 +69,7 @@ public class OpeningController {
                                                   @Valid @RequestBody OpeningRequest request,
                                                   @AuthenticationPrincipal UserDetails principal) {
         User owner = currentUser(principal);
+        log.info("Received request to update opening with id {}: {}", id, owner.getEmail());
         return openingService.update(id, owner, request)
                 .map(o -> ResponseEntity.ok(OpeningResponse.from(o)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -73,6 +79,7 @@ public class OpeningController {
     public ResponseEntity<Void> delete(@PathVariable Long id,
                                        @AuthenticationPrincipal UserDetails principal) {
         User owner = currentUser(principal);
+        log.info("Received request to delete opening with id {}: {}", id, owner.getEmail());
         return openingService.delete(id, owner)
                 ? ResponseEntity.noContent().build()
                 : ResponseEntity.notFound().build();

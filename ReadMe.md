@@ -49,4 +49,7 @@ curl -X POST http://localhost:8080/api/auth/login \
         -d '{"email":"alice@example.com","password":"password"}'
 
 
-### 
+### Clean the node dependencies 
+rm -rf node_modules
+rm package-lock.json
+npm cache clean --force

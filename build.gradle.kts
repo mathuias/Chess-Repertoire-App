@@ -3,7 +3,7 @@ plugins {
 	id("java")
 	id("org.springframework.boot") version "4.0.6"
 
-	id("com.gorylenko.gradle-git-properties") version "2.4.0"
+	//id("com.gorylenko.gradle-git-properties") version "2.5.3"
 	id("io.spring.dependency-management") version "1.1.7"
 	id("com.github.ben-manes.versions") version "0.51.0"
 
@@ -23,6 +23,12 @@ plugins {
 //apply(from = "gradle/plugins/owasp.gradle.kts")
 //apply(from = "gradle/plugins/spotbugs.gradle.kts")
 
+// gitProperties plugin has compatibility issues with Gradle 9.x
+// gitProperties {
+// 	extProperty = "gitProps"
+// 	dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+// 	dateFormatTimeZone = "UTC"
+// }
 
 group = "dev.mathuias"
 version = "0.0.2"
